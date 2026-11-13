@@ -32,8 +32,8 @@ def test_left_swipe_next_and_return_does_not_reverse():
 
 def test_closed_hand_and_unarmed_motion_do_not_turn_pages():
     g=PageGesture()
-    assert g.update(hand(.2),0).page==0
-    assert g.update(hand(.8),.3).page==0
+    assert g.update(hand(.05),0).page==0
+    assert g.update(hand(.95),.3).page==0
     g.update(hand(opened=False),.5)
     result=g.update(hand(.2,opened=False),1)
     assert result.page==0
@@ -51,9 +51,9 @@ def test_slow_or_vertical_motion_is_rejected():
     g=PageGesture()
     arm(g)
     g.update(hand(.43),.6)
-    assert g.update(hand(.25),1.6).page==0
-    arm(g,2)
-    assert g.update(hand(.25,.9),2.6).page==0
+    assert g.update(hand(.25),3.2).page==0
+    arm(g,4)
+    assert g.update(hand(.25,1.0),4.6).page==0
 
 
 def test_hover_does_not_turn_pages():

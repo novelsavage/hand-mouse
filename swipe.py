@@ -13,7 +13,7 @@ class SwipeResult:
 
 
 class PageGesture:
-    def __init__(self, dwell=.35, distance=.20, cooldown=.9, max_duration=.85):
+    def __init__(self, dwell=.10, distance=.10, cooldown=.55, max_duration=2.5):
         self.dwell = dwell
         self.distance = distance
         self.cooldown = cooldown
@@ -35,16 +35,16 @@ class PageGesture:
         wrist = hand[0]
         def distance(i):
             return math.hypot(hand[i].x-wrist.x, hand[i].y-wrist.y)
-        open_fingers = sum(distance(t) > 1.12*distance(p)
+        open_fingers = sum(distance(t) > 1.06*distance(p)
                            for t,p in ((8,6),(12,10),(16,14),(20,18)))
-        if open_fingers < 3:
+        if open_fingers < 2:
             self.center_since = self.anchor = self.started = None
             return SwipeResult(message="手を開いてください", x=x, y=y)
         if now < self.locked_until:
             self.center_since = None
             return SwipeResult(message="切り替えました · 手を中央へ戻してください", x=x, y=y)
         if self.anchor is None:
-            if .36 <= x <= .64 and .15 <= y <= .85:
+            if .15 <= x <= .85 and .08 <= y <= .92:
                 if self.center_since is None:
                     self.center_since = now
                 progress = min(1, (now-self.center_since)/self.dwell)
@@ -55,7 +55,7 @@ class PageGesture:
             self.center_since = None
             return SwipeResult(x=x, y=y)
         dx, dy = x-self.anchor[0], y-self.anchor[1]
-        if abs(dy) > .20:
+        if abs(dy) > .35:
             self.center_since = self.anchor = self.started = None
             return SwipeResult(message="中央に戻して、横に動かしてください", x=x, y=y)
         if abs(dx) > .04 and self.started is None:

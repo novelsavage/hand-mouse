@@ -151,7 +151,7 @@ class Gallery(QMainWindow):
         self.progress.setTextVisible(False)
         self.progress.setMaximumHeight(4)
         instructions.addWidget(self.progress)
-        help_text = QLabel('開いた手を中央で止める → 左に払って次へ / 右に払って前へ\n1回ずつ切り替わります。続けるときは手を中央に戻してください。')
+        help_text = QLabel('開いた手を一瞬止める → 左へ軽く動かすと次 / 右なら前\n1回ずつ切り替わります。画面内の広い範囲から軽く動かせます。')
         help_text.setWordWrap(True)
         help_text.setStyleSheet('color:#756d61;')
         instructions.addWidget(help_text)

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hand Gallery — 手でめくる作品展</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23285e50%27/%3E%3Cpath d=%27M8 8h16v16H8z%27 fill=%27%23fffefa%27/%3E%3C/svg%3E"><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header><div class="brand"><span class="brand-mark">▤</span><div><h1>みんなの作品展</h1><p>手でつかんで、次の一枚へ。</p></div></div><div class="top-controls"><span id="count">作品を準備中</span><button id="fullscreen" title="F11でも全画面表示できます">全画面表示 ⤢</button></div></header>
+<main>
+<section id="stage" aria-label="作品展示">
+<div class="page under" aria-hidden="true"><img id="under-image" alt=""><span class="paper-edge"></span></div>
+<div class="page" id="page" tabindex="0" aria-label="つかんで左右に動かせる作品"><img id="art" alt=""><div class="empty" id="empty"><span>▧</span><h2>作品をここに飾りましょう</h2><p>画像フォルダーを選ぶと、すぐに展示できます。</p><button id="empty-select">作品フォルダーを選ぶ</button></div><span class="paper-edge"></span></div>
+<div id="hand-cursor" aria-hidden="true"><span>✋</span></div>
+<span class="stage-hint" id="drag-hint">マウスでも、ページをつかんでめくれます</span>
+</section>
+<div class="caption"><button id="previous" aria-label="前の作品">←</button><div><span class="eyebrow">NOW SHOWING</span><h2 id="title">画像を選んでください</h2></div><button id="next" aria-label="次の作品">→</button></div>
+</main>
+<footer>
+<div class="interaction"><div class="hand-guide"><canvas id="skeleton" width="160" height="100" aria-label="認識した手の骨格"></canvas><span id="camera-state">カメラ停止中</span></div><div class="instructions"><span class="eyebrow" id="step">手でめくる、作品展示</span><p id="message" role="status">手を開く → つかむ → 横へ動かして離す</p><div class="steps"><span>✋ 手を見せる</span><b>→</b><span>✊ つかむ・つまむ</span><b>→</b><span>↔ 動かして離す</span></div></div><button id="camera" class="primary">カメラを使う</button></div>
+<details id="settings"><summary>展示の設定 <span>画像・操作・カメラ</span></summary><div class="settings-grid"><label>作品画像<button id="select-folder">画像フォルダーを選ぶ</button><input id="files" type="file" webkitdirectory multiple accept="image/*" hidden></label><label>操作方法<select id="mode"><option value="grab">つかんでめくる</option><option value="swipe">軽いスワイプ</option></select></label><label>めくりやすさ<select id="sensitivity"><option value=".05">とても軽い（小さな動き）</option><option value=".08" selected>軽い（おすすめ）</option><option value=".13">しっかり動かす</option></select></label><label>カメラ<select id="camera-device"><option value="">標準のカメラ</option></select></label></div></details>
+<div class="footnote"><span>画像・カメラ映像はこの端末内で処理します。撮影・送信はしません。</span><span>← →：作品の切り替え　Esc：カメラ停止</span></div>
+</footer>
+<video id="video" playsinline muted hidden></video>
+<script type="module" src="/app.js"></script>
+</body></html>

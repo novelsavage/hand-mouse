@@ -1,0 +1,12 @@
+[project]
+name = "hand-mouse"
+version = "0.2.0"
+description = "Hand gesture mouse for KDE Plasma on Linux"
+requires-python = ">=3.11,<3.13"
+dependencies = ["mediapipe>=0.10.32,<0.11", "opencv-contrib-python>=4.11,<6", "PySide6-Essentials>=6.8,<7", "evdev>=1.9,<2"]
+
+[dependency-groups]
+dev = ["pytest>=8,<10"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
